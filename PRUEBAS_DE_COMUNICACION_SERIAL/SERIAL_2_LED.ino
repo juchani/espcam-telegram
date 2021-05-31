@@ -2,11 +2,12 @@
 #include <ACROBOTIC_SSD1306.h>
 #define bzz 2
 #define rl 1
+
 int option;
 int led = 6;
 
 void setup(){
-  Serial.begin(115200);
+  Serial.begin(9600);//velocidad estandar 9600
   pinMode(led, OUTPUT); 
   pinMode(bzz, OUTPUT);
   pinMode(rl,OUTPUT);
