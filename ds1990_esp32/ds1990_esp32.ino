@@ -6,6 +6,7 @@ byte Usuario1[8] = {0x1, 0x50, 0x52, 0xB5, 0x1, 0x0, 0x0, 0xBE} ;
 
 void setup() {
   Serial.begin(9600);
+  Serial.print("iniciando");
   Serial.println("............");
 
 }
@@ -25,7 +26,10 @@ void loop() {
   }
  
   if(comparar(buffer,Usuario1)){
-   Serial.print("\n acceso \t correcto \n "); 
+   Serial.print("\n acceso \t correcto \n ");
+   delay(2000);
+   Serial.println("reiniciando");
+   ESP.restart(); 
   }
   else{
     Serial.println("acceso denegado");

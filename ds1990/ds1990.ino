@@ -26,7 +26,7 @@ void loop() {
  
   if(comparar(buffer,Usuario1)){
    Serial.print("\n acceso correcto \n "); 
-   ESP.restart();
+ //  ESP.restart();
   }
   else{
     Serial.println("acceso denegado");
