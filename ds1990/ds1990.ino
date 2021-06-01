@@ -1,14 +1,15 @@
 #include <OneWire.h>
-
 OneWire ibutton (3);
+byte buffer[20];//lista
+byte Usuario1[8] = {0x1, 0x50, 0x52, 0xB5, 0x1, 0x0, 0x0, 0xBE} ;
 
-byte buffer[20];
-byte Usuario1[8] = {0x1, 0x9F, 0x9E, 0xB4, 0x1, 0x0, 0x0, 0x89} ;
+
 void setup() {
   Serial.begin(9600);
   Serial.println("............");
 
 }
+
 
 void loop() {
 
@@ -22,12 +23,16 @@ void loop() {
     Serial.print(buffer[x], HEX);
     Serial.print(" ");
   }
-  Serial.println(" ");
-  Serial.println(comparar(buffer,Usuario1));
+ 
+  if(comparar(buffer,Usuario1)){
+   Serial.print("\n acceso \t correcto \n "); 
+  }
+  else{
+    Serial.println("acceso denegado");
+  }
 }
 
-
-boolean comparar(byte array1[], byte array2[])
+bool comparar(byte array1[], byte array2[])
 {
   if (array1[0] != array2[0])return (false);
   if (array1[1] != array2[1])return (false);
@@ -37,6 +42,5 @@ boolean comparar(byte array1[], byte array2[])
   if (array1[5] != array2[5])return (false);
   if (array1[6] != array2[6])return (false);
   if (array1[7] != array2[7])return (false);
-
   return (true);
 }
