@@ -8,7 +8,16 @@ void setup() {
   Serial.begin(9600);
   Serial.print("iniciando");
   Serial.println("............");
-
+  if (!ibutton.search (buffer)) {
+    ibutton.reset_search();
+    delay(200);
+  }
+if(comparar(buffer,Usuario1)){
+   Serial.print("modo enrol"); 
+  }
+  else{
+    Serial.println("acceso denegado");
+  }
 }
 
 
